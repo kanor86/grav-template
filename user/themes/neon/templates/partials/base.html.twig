@@ -13,15 +13,25 @@
     <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') }}" />
     <link rel="canonical" href="{{ page.url(true, true) }}" />
 
-    {% block stylesheets %}
-        {% do assets.addCss('http://yui.yahooapis.com/pure/0.6.0/pure-min.css', 100) %}
-        {% do assets.addCss('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 99) %}
-        {% do assets.addCss('theme://css/custom.css', 98) %}
+   {% block stylesheets %}
+        {% do assets.addCss('theme://css/custom.css', 105) %}
+        {% do assets.addCss('https://fonts.googleapis.com/css?family=Roboto:300,400', 104) %}
+        {% do assets.addCss('theme://plugins/linearicons/style.css', 103) %}
+        {% do assets.addCss('theme://plugins/owl-carousel/owl.transitions.css', 102) %}
+        {% do assets.addCss('theme://plugins/owl-carousel/owl.theme.css', 101) %}
+        {% do assets.addCss('theme://plugins/owl-carousel/owl.carousel.css', 100) %}
+        {% do assets.addCss('theme://plugins/font-awesome-4.6.1/css/font-awesome.min.css', 99) %}
+        {% do assets.addCss('theme://plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css', 98) %}
     {% endblock %}
     {{ assets.css() }}
 
     {% block javascripts %}
-        {% do assets.addJs('jquery', 100) %}
+        <!-- {% do assets.addJs('jquery', 100) %} -->
+        {% do assets.addJs('theme://plugins/jquery-2.1.4.min.js') %}
+        {% do assets.addJs('theme://plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js') %}
+        {% do assets.addJs('theme://plugins/owl-carousel/owl.carousel.min.js') %}
+        {% do assets.addJs('theme://js/custom.js') %}
+        
     {% endblock %}
     {{ assets.js() }}
 
