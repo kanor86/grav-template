@@ -1,4 +1,4 @@
-# Contributing to Grav
+# Contributing to grav
 
 :+1::tada: First, thanks for getting involved with Grav! :tada::+1:
 
