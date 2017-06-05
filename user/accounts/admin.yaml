@@ -1,0 +1,11 @@
+email: ronakp@mkcl.org
+fullname: Admin
+title: Administrator
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$uR.u6yDGicZFf.zhAZeOyeilQ4JongNKxFafDiQ/rvc.pS7dWQL6a
