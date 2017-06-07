@@ -104,6 +104,45 @@
                 <!-- </div>
             </div> -->
         </section>
+        <section class="container box-newsletter">
+            <!-- <div class="container"> -->
+                <div class="row vertical-adjust">
+                    <div class="col-md-6">
+                        <h4>Stay Informed</h4>
+                        <p>Get updates on registration dates, new opening, phases and much much more!</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <form>
+                            <input type="text" class="form-control" name="" placeholder="Enter Email Address"><button class="btn">Subscribe <i class="fa fa-angle-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </section>
+        {% endblock %}
+
+        {% block footerTop %}
+        <section id="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 box-about">
+                        <img src="{{ config.site.logo }}" alt="{{ config.site.title }}">
+                        <p>This is where some text about the company will be written, or it can also be some information about the purpose of the website and how it can be useful to its visitors.</p>
+                    </div>
+                    <div class="col-md-offset-1 col-md-7">
+                        <h5>Important Links</h5>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About MKCL</a></li>
+                            <li><a href="#">About MS-CIT</a></li>
+                            <li><a href="#">KLiC Courses</a></li>
+                            <li><a href="#">Empanelment</a></li>
+                            <li><a href="#">Help & Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
         {% endblock %}
 
         {% block footer %}
