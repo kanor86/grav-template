@@ -7,56 +7,76 @@
     <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
     {% include 'partials/metadata.html.twig' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+    <link rel="icon" type="image/png" href="{{ url('theme://assets/images/favicon.ico') }}" />
     <link rel="canonical" href="{{ page.url(true, true) }}" />
 
     {% block stylesheets %}
-        {% do assets.addCss('theme://assets/css/bootstrap.min.css', 100) %}
-        {% do assets.addCss('theme://assets/css/font-awesome.min.css') %}
-        {% do assets.addCss('theme://assets/css/template.css', 200) %}
+        {% do assets.addCss('theme://assets/css/bootstrap.min.css', 200) %}
+        {% do assets.addCss('theme://assets/css/font-awesome.min.css', 190) %}
+        {% do assets.addCss('theme://assets/css/owl.carousel.css', 180) %}
+        {% do assets.addCss('theme://assets/css/template.css', 100) %}
     {% endblock %}
     {{ assets.css() }}
 
-    {% block javascripts %}
-        {#% do assets.addJs('jquery', 101) %#}
-        {% do assets.addJs('theme://assets/js/jquery-2.1.4.min.js', 101) %}
-        {% do assets.addJs('theme://assets/js/bootstrap.min.js') %}
-        {% do assets.addJs('theme://assets/js/custom.js') %}
-    {% endblock %}
-    {{ assets.js() }}
-
 {% endblock head %}
 </head>
-<body id="top" class="{{ page.header.body_classes }}">
+<body class="{{ page.header.body_classes }}">
     <div class="main">
+        {% block headerTop %}
+        <section id="header-top">
+            <div class="container">
+                <ul class="user-help">
+                    <li><i class="fa fa-envelope-o"></i> ncr@mkcl.org</li>
+                    <li><i class="fa fa-phone"></i> 022 39435735</li>
+                    <li><i class="fa fa-phone"></i> 022 39435775</li>
+                    <li class="box-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-youtube"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        {% endblock %}
         {% block header %}
         <header id="header">
-            <div id="logo">
-                <h3><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h3>
-            </div>
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Brand</a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="logo-holder">
+                            <a id="logo" href="{{ base_url == '' ? '/' : base_url }}">
+                                <img src="{{ config.site.logo }}" alt="{{ config.site.title }}">
+                                <div class="logo-text">
+                                    Network Partner
+                                    <span>Registration</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        {% block header_extra %}{% endblock %}
-                        {% if config.plugins.langswitcher.enabled %}
-                        {% include 'partials/langswitcher.html.twig' %}
-                        {% endif %}
-                        {% block header_navigation %}
-                        {% include 'partials/navigation.html.twig' %}
-                        {% endblock %}
+                    <div class="col-md-8">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-main-menu" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Brand</a>
+                                </div>
+                                <div class="collapse navbar-collapse" id="nav-main-menu">
+                                    {% block header_extra %}{% endblock %}
+                                    {% if config.plugins.langswitcher.enabled %}
+                                    {% include 'partials/langswitcher.html.twig' %}
+                                    {% endif %}
+                                    {% block header_navigation %}
+                                    {% include 'partials/navigation.html.twig' %}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        </nav>
                     </div>
-                    <!-- <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span> -->
                 </div>
-            </nav>
+            </div>
         </header>
         {% endblock %}
 
@@ -64,31 +84,31 @@
 
         {% block body %}
         <section id="content" class="{{ class }}">
-            <div class="container">
-                <div class="row">
+            <!-- <div class="container">
+                <div class="row"> -->
                     <!-- <div class="well">value = {{ page.header.sidebar }}</div> -->
-                    {% set main_col = page.header.sidebar ? 'col-md-9' : 'col-md-12' %}
-                    {% if page.header.sidebar == 'left' %}
-                    <aside id="left-sidebar" class="col-md-3">
+                    {#% set main_col = page.header.sidebar ? 'col-md-9' : 'col-md-12' %#}
+                    {#% if page.header.sidebar == 'left' %#}
+                    <!-- <aside id="left-sidebar" class="col-md-3">
                         {% include 'partials/navigation-alt.html.twig' %}
-                    </aside>
-                    {% endif %}
+                    </aside> -->
+                    {#% endif %#}
                     <main id="main-content" class="{{ main_col }}">
                         {% block content %}{% endblock %}
                     </main>
-                    {% if page.header.sidebar == 'right' %}
-                    <aside id="right-sidebar" class="col-md-3">
+                    {#% if page.header.sidebar == 'right' %#}
+                    <!-- <aside id="right-sidebar" class="col-md-3">
                         {% include 'partials/navigation-alt.html.twig' %}
-                    </aside>
-                    {% endif %}
-                </div>
-            </div>
+                    </aside> -->
+                    {#% endif %#}
+                <!-- </div>
+            </div> -->
         </section>
         {% endblock %}
 
         {% block footer %}
         <footer id="footer">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
                     <div class="copyright col-md-12">
                         Copyright &copy; 2017 <a href="http://www.mkcl.org" target="_blank">Maharashtra Knowledge Corporation Limited</a>. All Rights Reserved.
@@ -98,18 +118,13 @@
         </footer>
         {% endblock %}
     </div>
-    {% block bottom %}
-        {{ assets.js('bottom') }}
-        <!-- <script>
-        $(function () {
-            $(document).ready(function() {
-              $.slidebars({
-                hideControlClasses: true,
-                scrollLock: true
-              });
-            });
-        });
-        </script> -->
-    {% endblock %}
+{% block javascripts %}
+    {#% do assets.addJs('jquery', 101) %#}
+    {% do assets.addJs('theme://assets/js/jquery-2.1.4.min.js', 200) %}
+    {% do assets.addJs('theme://assets/js/bootstrap.min.js', 190) %}
+    {% do assets.addJs('theme://assets/js/owl.carousel.min.js', 180) %}
+    {% do assets.addJs('theme://assets/js/custom.js', 100) %}
+{% endblock %}
+{{ assets.js() }}
 </body>
 </html>

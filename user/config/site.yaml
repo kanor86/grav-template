@@ -21,9 +21,20 @@ custom_file:
     type: image/png
     size: 84382
     path: user/themes/register/images/mkcl.png
+  user/themes/register/images/logo_mkcl.png:
+    name: logo_mkcl.png
+    type: image/png
+    size: 32481
+    path: user/themes/register/images/logo_mkcl.png
+  user/themes/register/images/slide-bg.jpg:
+    name: slide-bg.jpg
+    type: image/jpeg
+    size: 281235
+    path: user/themes/register/images/slide-bg.jpg
 new_file:
   user/themes/register/documents/OnCeT-Online-Exam-Instructions-for-Examinees.pdf:
     name: OnCeT-Online-Exam-Instructions-for-Examinees.pdf
     type: application/pdf
     size: 665249
     path: user/themes/register/documents/OnCeT-Online-Exam-Instructions-for-Examinees.pdf
+logo: user/themes/register/images/logo_mkcl.png

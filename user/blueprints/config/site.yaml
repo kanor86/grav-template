@@ -9,6 +9,10 @@ form:
             underline: true
 
             fields:
+                logo:
+                    type: text
+                    label: Logo Url
+                    value: ''
                 custom_file:
                     type: file
                     label: Upload your common files

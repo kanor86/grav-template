@@ -1,0 +1,15 @@
+<section id="showcase">
+    <div class="owl-slider">
+        {% for slide in page.header.slides %}
+        <div class="slide{% if slide.primary %} primary{% endif %}" style="background-image: url({{ slide.bg }})">
+            <div class="container">
+                <div class="slide-holder">
+                    <div class="slide-title">{{ slide.title }}</div>
+                    <div class="slide-subtitle">This is a sample text that is to be replaced with the actual text that should be added in this area. This is a sample text that is to be replaced with the actual text that should be added in this area.</div>
+                    <div class="slide-action"><a class="btn btn-orange m-r-15" href="#">Read More</a><a class="btn btn-white" href="#">Apply Now</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
