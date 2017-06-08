@@ -43,7 +43,7 @@
                     <div class="col-md-4">
                         <div class="logo-holder">
                             <a id="logo" href="{{ base_url == '' ? '/' : base_url }}">
-                                <img src="{{ config.site.logo }}" alt="{{ config.site.title }}">
+                                <img src="{{ base_url }}/{{ config.site.logo }}" alt="{{ config.site.title }}">
                                 <div class="logo-text">
                                     Network Partner
                                     <span>Registration</span>
@@ -103,6 +103,7 @@
                     {#% endif %#}
                 <!-- </div>
             </div> -->
+            {#% include 'modular/showcase.html.twig' with {'page': page.find('/home/_showcase')} %#}
         </section>
         <section class="container box-newsletter">
             <!-- <div class="container"> -->

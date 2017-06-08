@@ -23,13 +23,20 @@ form:
                                 .title:
                                     type: text
                                     label: Slide Title
-                                .primary:
-                                    type: toggle
-                                    label: Primary
-                                    highlight: 1
-                                    default: 1
-                                    options:
-                                        1: 'Yes'
-                                        0: 'No'
-                                    validate:
-                                        type: bool
+                                .subtitle:
+                                    type: text
+                                    label: Slide Subtitle
+                                .buttons:
+                                    name: button
+                                    type: list
+                                    label: Slide Buttons
+                                    fields:
+                                        .text:
+                                            type: text
+                                            label: Button label
+                                        .url:
+                                            type: text
+                                            label: Button Link
+                                        .class:
+                                            type: text
+                                            label: Button Classes
