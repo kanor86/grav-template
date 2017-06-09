@@ -1,0 +1,21 @@
+rules:
+  slug:
+    pattern: "[a-z][a-z0-9_\-]+"
+    min: 2
+    max: 80
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: File Manager
+
+          fields:
+            uploads:
+              type: pagemedia
+              label: Upload your Files here

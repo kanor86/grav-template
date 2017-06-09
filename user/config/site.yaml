@@ -38,4 +38,4 @@ new_file:
     type: application/pdf
     size: 665249
     path: user/themes/register/documents/OnCeT-Online-Exam-Instructions-for-Examinees.pdf
-logo: user/themes/register/images/logo_mkcl.png
+logo: user/pages/images/logo_mkcl.png

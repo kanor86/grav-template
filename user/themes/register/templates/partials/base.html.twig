@@ -103,7 +103,6 @@
                     {#% endif %#}
                 <!-- </div>
             </div> -->
-            {#% include 'modular/showcase.html.twig' with {'page': page.find('/home/_showcase')} %#}
         </section>
         <section class="container box-newsletter">
             <!-- <div class="container"> -->
@@ -121,6 +120,27 @@
             <!-- </div> -->
         </section>
         {% endblock %}
+
+        {#% include 'modular/showcase.html.twig' with {'page': page.find('/home/_showcase')} %#}
+        <div class="well">
+        {% for child in page.collection %}
+            {% include 'modular/text.html.twig' with {'page': child} %}
+        {% endfor %}
+        {% set options = { items: {'@page.children': '/footer'}, 'limit': 5 } %}
+        {% set my_collection = page.collection(options) %}
+
+        <ul>
+        {% for p in my_collection %}
+        <li>{{ p.title }}</li>
+        {% endfor %}
+        </ul>
+        well
+        {% for module in page.collection() %}
+            {% include 'modular/text.html.twig' with {'page': page.find('/footer')} %}
+            <!-- <div id="{{ _self.pageLinkName(module.menu) }}"></div> -->
+            {{ module.content }}
+        {% endfor %}
+        </div>
 
         {% block footerTop %}
         <section id="footer-top">
