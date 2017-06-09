@@ -7,5 +7,6 @@ content:
         dir: desc
 body_classes: modular
 routable: false
+visible: false
 ---
 
