@@ -1,0 +1,18 @@
+title: Extras
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+    fields:
+        tabs:
+            fields:
+                content:
+                    type: tab
+                    # title: Extras
+                    fields:
+                        header.subtitle:
+                            ordering@: header.title
+                            type: text
+                            label: Subtitle
+                            style: vertical

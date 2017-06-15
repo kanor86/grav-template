@@ -1,5 +1,5 @@
 ---
-title: Images
+title: mscit
 routable: false
 ---
 

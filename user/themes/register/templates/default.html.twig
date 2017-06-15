@@ -1,5 +1,39 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-	{{ page.content }}
+<div class="container">
+    <div class="row">
+        <!-- <div class="well">value = {{ page.header.sidebar }}</div> -->
+        {#% set main_col = (page.header.sidebar or page.parent.header.sidebar) ? 'col-md-9' : 'col-md-12' %#}
+        {% if (page.header.sidebar == 'left') or (page.parent.header.sidebar == 'left') %}
+            {% set main_col = 'col-md-9' %}
+        {% elseif (page.header.sidebar == 'right') or (page.parent.header.sidebar == 'right') %}
+            {% set main_col = 'col-md-pull-3 col-md-9' %}
+        {% else %}
+            {% set main_col = 'col-md-12' %}
+        {% endif %}
+        
+        {% if (page.header.sidebar == 'left') or (page.parent.header.sidebar == 'left') %}
+        <aside id="left-sidebar" class="col-md-3 sidebar-modern">
+            {% if page.parent.header.category_logo %}
+            <div class="cat-image">
+                <img class="img-responsive" src="{{ base_url }}/{{ page.parent.header.category_logo }}" alt="">
+            </div>
+            {% endif %}
+            {% include 'partials/navigation-alt.html.twig' %}
+        </aside>
+        {% endif %}
+        {% if (page.header.sidebar == 'right') or (page.parent.header.sidebar == 'right') %}
+        <aside id="right-sidebar" class="col-md-push-9 col-md-3 sidebar-modern">
+            {% include 'partials/navigation-alt.html.twig' %}
+        </aside>
+        {% endif %}
+        <section id="main-content" class="{{ main_col }}">
+            <div class="page-header">
+                <h1>{{ page.title }}</h1>
+            </div>
+            {{ page.content }}
+        </section>
+    </div>
+</div>
 {% endblock %}

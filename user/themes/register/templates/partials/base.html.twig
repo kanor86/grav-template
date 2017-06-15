@@ -20,7 +20,8 @@
 
 {% endblock head %}
 </head>
-<body class="{{ page.header.body_classes }}">
+
+<body class="view-{{ page.template }} {{ page.header.body_classes }}">
     <div class="main">
         {% block headerTop %}
         <section id="header-top">
@@ -61,7 +62,7 @@
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                     </button>
-                                    <a class="navbar-brand" href="#">Brand</a>
+                                    <a class="navbar-brand" href="#">Main Menu</a>
                                 </div>
                                 <div class="collapse navbar-collapse" id="nav-main-menu">
                                     {% block header_extra %}{% endblock %}
@@ -80,10 +81,8 @@
         </header>
         {% endblock %}
 
-        {% block showcase %}{% endblock %}
-
         {% block body %}
-        <section id="content" class="{{ class }}">
+        <main id="content">
             <!-- <div class="container">
                 <div class="row"> -->
                     <!-- <div class="well">value = {{ page.header.sidebar }}</div> -->
@@ -93,9 +92,9 @@
                         {% include 'partials/navigation-alt.html.twig' %}
                     </aside> -->
                     {#% endif %#}
-                    <main id="main-content" class="{{ main_col }}">
+                    <!-- <section id="main-content" class="{{ main_col }}"> -->
                         {% block content %}{% endblock %}
-                    </main>
+                    <!-- </section> -->
                     {#% if page.header.sidebar == 'right' %#}
                     <!-- <aside id="right-sidebar" class="col-md-3">
                         {% include 'partials/navigation-alt.html.twig' %}
@@ -103,24 +102,11 @@
                     {#% endif %#}
                 <!-- </div>
             </div> -->
-        </section>
+        </main>
+        {% endblock %}
 
         {#% include 'modular/showcase.html.twig' with {'page': page.find('/home/_showcase')} %#}
-        <div class="well">
-        {% set options = { items: {'@page.children': '/footer'}, 'limit': 5 } %}
-        {% set my_collection = page.collection(options) %}
-        <div class="container">
-            <div class="row">
-                {% for p in my_collection %}
-                <div class="{{ p.header.body_classes }}">
-                    {% if p.header.show_title is not defined %}<h5>{{ p.title }}</h5>{% endif %}
-                    {{ p.content }}
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-        well
-        </div>
+        {% if page.header.newsletter == true %}
         <section class="container box-newsletter">
             <!-- <div class="container"> -->
                 <div class="row vertical-adjust">
@@ -136,14 +122,26 @@
                 </div>
             <!-- </div> -->
         </section>
-        {% endblock %}
+        {% endif %}
 
         {% block footerTop %}
-        <section id="footer-top">
+        <section id="footer-top" {% if page.header.newsletter == true %}class="join-news"{% endif %}>
+            {% set options = { items: {'@page.children': '/footer'}, 'limit': 5 } %}
+            {% set my_collection = page.collection(options) %}
             <div class="container">
                 <div class="row">
+                    {% for p in my_collection %}
+                    <div class="{{ p.header.body_classes }}">
+                        {% if p.header.show_title is not defined %}<h5>{{ p.title }}</h5>{% endif %}
+                        {{ p.content }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- <div class="container">
+                <div class="row">
                     <div class="col-md-4 box-about">
-                        <img src="{{ config.site.logo }}" alt="{{ config.site.title }}">
+                        <img src="{{ base_url }}/{{ config.site.logo }}" alt="{{ config.site.title }}">
                         <p>This is where some text about the company will be written, or it can also be some information about the purpose of the website and how it can be useful to its visitors.</p>
                     </div>
                     <div class="col-md-offset-1 col-md-7">
@@ -158,7 +156,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
         {% endblock %}
 

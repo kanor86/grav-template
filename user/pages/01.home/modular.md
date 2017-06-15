@@ -1,6 +1,7 @@
 ---
 title: Home
 onpage_menu: false
+newsletter: false
 content:
     items: '@self.modular'
     order:
