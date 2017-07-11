@@ -1,0 +1,29 @@
+@extends:
+    '@parent'
+
+form:
+    fields:
+        anothersection:
+            type: section
+            title: Media Manager
+            underline: true
+
+            fields:
+                logo:
+                    type: text
+                    label: Logo Url
+                    value: ''
+                custom_file:
+                    type: file
+                    label: Upload your common files
+                    destination: 'user/themes/register/images'
+                    multiple: true
+                    accept:
+                        - image/*
+                new_file:
+                    type: file
+                    label: Upload your common documents
+                    destination: 'user/themes/register/documents'
+                    multiple: true
+                    accept:
+                        - application/*

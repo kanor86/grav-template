@@ -1,0 +1,62 @@
+{% macro loop(page) %}
+    {% for p in page.children.visible %}
+        {% if (p.active or p.activeChild) == 1 %}
+            {% set current_page = (p.active or p.activeChild) ? 'active' : '' %}
+            {% if p.children.visible.count > 0 %}
+                <li class="has-children {{ current_page }}">
+                    <a href="{{ p.url }}">
+                        {{ p.menu }} <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="">
+                        {{ _self.looped(p) }}
+                    </ul>
+                </li>
+            {% else %}
+                <li class="{{ current_page }}">
+                    <a href="{{ p.url }}">
+                        1 {{ p.menu }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+<ul class="nav navbar-nav">
+    {% if theme_config.dropdown.enabled %}
+        {{ _self.loop(pages) }}
+    {% else %}
+        {% for page in pages.children.visible %}
+            {% if page.active == 1 %}
+            {% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
+            <li class="active">
+                <a href="{{ page.url }}">
+                    {{ page.menu }} {{ page.active }}
+                </a>
+            </li>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</ul>
+
+{% macro looped(page) %}
+    {% for p in page.children.visible %}
+            {% set current_page = (p.active or p.activeChild) ? 'active' : '' %}
+            {% if p.children.visible.count > 0 %}
+                <li class="has-children {{ current_page }}">
+                    <a href="{{ p.url }}">
+                        {{ p.menu }} <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="">
+                        {{ _self.loop(p) }}
+                    </ul>
+                </li>
+            {% else %}
+                <li class="{{ current_page }}">
+                    <a href="{{ p.url }}">
+                        1 {{ p.menu }}
+                    </a>
+                </li>
+            {% endif %}
+    {% endfor %}
+{% endmacro %}

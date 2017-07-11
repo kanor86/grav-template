@@ -1,0 +1,35 @@
+title: Showcase
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+    fields:
+        tabs:
+            fields:
+                showcase:
+                    type: tab
+                    title: Showcase
+                    fields:
+                        header.slides:
+                            name: slide
+                            type: list
+                            # label: List Item
+                            style: vertical
+                            fields:
+                                .bg:
+                                    type: text
+                                    label: Background Image
+                                .title:
+                                    type: text
+                                    label: Slide Title
+                                .primary:
+                                    type: toggle
+                                    label: Primary
+                                    highlight: 1
+                                    default: 1
+                                    options:
+                                        1: 'Yes'
+                                        0: 'No'
+                                    validate:
+                                        type: bool
