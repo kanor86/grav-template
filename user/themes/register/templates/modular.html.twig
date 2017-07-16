@@ -15,7 +15,13 @@
     {{ parent() }}
     {% if show_onpage_menu %}
         <script>
-        
+        // singlePageNav initialization & configuration for modular pages
+        // $('#navbar').singlePageNav({
+        //     offset: $('#header').outerHeight(),
+        //     filter: ':not(.external)',
+        //     updateHash: true,
+        //     currentClass: 'active'
+        // });
         </script>
     {% endif %}
 {% endblock %}
